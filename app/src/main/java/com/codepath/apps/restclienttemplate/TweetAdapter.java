@@ -48,6 +48,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         holder.tvBody.setText(tweet.body);
     }
 
+    @Override
     public int getItemCount()
     {
         return mTweets.size();
