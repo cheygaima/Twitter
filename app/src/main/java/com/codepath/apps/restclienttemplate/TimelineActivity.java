@@ -101,4 +101,6 @@ public class TimelineActivity extends AppCompatActivity {
             }
         }); //get data from the twitter api
     }
+
+
 }
