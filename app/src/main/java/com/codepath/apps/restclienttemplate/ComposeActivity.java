@@ -1,0 +1,19 @@
+package com.codepath.apps.restclienttemplate;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+public class ComposeActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_compose);
+    }
+
+//    EditText simpleEditText = (EditText) findViewById(R.id.et_Tweet);
+//    String strValue = simpleEditText.getText().toString();
+
+
+
+}

@@ -1,10 +1,14 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -49,6 +53,13 @@ public class TimelineActivity extends AppCompatActivity {
         rvTweets.setAdapter(tweetAdapter);
 
         populateTimeline();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.timeline, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void populateTimeline()
@@ -102,5 +113,13 @@ public class TimelineActivity extends AppCompatActivity {
         }); //get data from the twitter api
     }
 
+   public void whenClicked(MenuItem mi) {
+       Intent intent = new Intent(this, ComposeActivity.class);
+       startActivityForResult(intent, 12);
+   }
 
 }
+
+
+
+

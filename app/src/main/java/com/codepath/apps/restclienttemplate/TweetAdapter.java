@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -63,11 +64,12 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
     //create ViewHolder class
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder  {
         public ImageView ivProfileImage;
         public TextView tvUsername;
         public TextView tvBody;
         public TextView tvTimestamp;
+        public EditText etTweet;
 
         public ViewHolder(View itemView)
         {
@@ -78,7 +80,18 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tvUsername = (TextView) itemView.findViewById(R.id.tvUserName);
             tvBody = (TextView) itemView.findViewById(R.id.tvBody);
             tvTimestamp = (TextView) itemView.findViewById(R.id.tvTimestamp);
+            etTweet = (EditText) itemView.findViewById(R.id.et_Tweet);
+
+            //store the context
+
+            //attach a click listener to the entire row view
+
         }
+
+//        @Override
+//        public void onClick(View v) {
+//
+//        }
     }
 
 }
