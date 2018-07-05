@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".TimelineActivity">
 
     <android.support.v7.widget.RecyclerView
@@ -15,4 +16,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:minHeight="?attr/actionBarSize"
+        app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+        app:subtitleTextColor="@android:color/white"
+        app:titleTextColor="@android:color/white"></android.support.v7.widget.Toolbar>
+
 </android.support.constraint.ConstraintLayout>
