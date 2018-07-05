@@ -13,4 +13,12 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="TimelineActivity" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">#ADD8E6</item>
+    </style>
+
+    <style name="ComposeActivity" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">#ADD8E6</item>
+    </style>
+
 </resources>

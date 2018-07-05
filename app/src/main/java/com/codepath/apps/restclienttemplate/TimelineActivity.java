@@ -16,6 +16,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,9 @@ public class TimelineActivity extends AppCompatActivity {
     TweetAdapter tweetAdapter;
     ArrayList<Tweet> tweets;
     RecyclerView rvTweets;
+    //Tweet tweet;
+
+    private final int REQUEST_CODE = 20; //can we anything we want
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +76,7 @@ public class TimelineActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                //Log.d("TwitterClient", response.toString());
+                Log.d("TwitterClient", response.toString()); //THIS WASNT ALWAYS UNCOMMENTED!!!!
                 //iterate through the json array
                 //for each entry, deserialize the json object
                 for (int i = 0; i < response.length(); i++)
@@ -115,8 +119,23 @@ public class TimelineActivity extends AppCompatActivity {
 
    public void whenClicked(MenuItem mi) {
        Intent intent = new Intent(this, ComposeActivity.class);
-       startActivityForResult(intent, 12);
+       startActivityForResult(intent, REQUEST_CODE);
    }
+
+
+    // TA.java, time to handle the result of the sub-activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // REQUEST_CODE is defined above
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+
+            Tweet composedTweet = (Tweet) Parcels.unwrap(data.getParcelableExtra("tweet"));
+            tweets.add(0, composedTweet);
+            tweetAdapter.notifyItemInserted(0);
+            rvTweets.scrollToPosition(0);
+
+        }
+    }
 
 }
 

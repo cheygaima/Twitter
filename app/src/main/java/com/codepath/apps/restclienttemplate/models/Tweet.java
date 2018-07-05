@@ -4,10 +4,14 @@ import android.text.format.DateUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+
+
+@Parcel
 
 public class Tweet {
     //list out the attributes
@@ -16,6 +20,8 @@ public class Tweet {
     public User user;
     public String createdAt;
     public String relativeDate;
+
+    public Tweet(){}
 
     //deserialize the JSOM
     public static Tweet fromJSON(JSONObject jsonObject) throws JSONException
