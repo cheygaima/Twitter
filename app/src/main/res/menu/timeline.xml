@@ -4,9 +4,17 @@
 
     <item
         android:id="@+id/mybutton"
-        android:icon="@drawable/ic_vector_compose"
+        android:color="#eb1313"
+        android:icon="@layout/ic_vector_compose5"
         android:onClick="whenClicked"
         android:title=""
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/miActionProgress"
+        android:title="Loading..."
+        android:visible="false"
+        android:orderInCategory="100"
         app:showAsAction="always"
         />
 

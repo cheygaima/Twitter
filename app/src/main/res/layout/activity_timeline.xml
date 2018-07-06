@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,13 +18,22 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toptoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_light"
-        android:minHeight="?attr/actionBarSize"
-        app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-        app:subtitleTextColor="@android:color/white"
-        app:titleTextColor="@android:color/white"></android.support.v7.widget.Toolbar>
+        android:layout_alignParentTop="true"
+        android:background="#0084b4"
 
-</android.support.constraint.ConstraintLayout>
+        android:minHeight="?attr/actionBarSize"
+
+        app:subtitleTextColor="@android:color/white"
+        app:titleTextColor="@android:color/white">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/bird" />
+    </android.support.v7.widget.Toolbar>
+
+
+</RelativeLayout>

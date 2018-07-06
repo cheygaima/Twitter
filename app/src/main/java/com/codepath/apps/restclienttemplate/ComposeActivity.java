@@ -103,6 +103,11 @@ public class ComposeActivity extends AppCompatActivity {
 
     }
 
+    public void whenClicked(View v)
+    {
+        finish();
+    }
+
 }
 
 
