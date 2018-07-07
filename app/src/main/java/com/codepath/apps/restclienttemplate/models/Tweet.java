@@ -20,6 +20,7 @@ public class Tweet {
     public User user;
     public String createdAt;
     public String relativeDate;
+    public String username;
 
     public Tweet(){}
 
@@ -34,6 +35,7 @@ public class Tweet {
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.user = User.fromJSON(jsonObject.getJSONObject("user"));
         tweet.relativeDate = getRelativeTimeAgo(jsonObject.getString("created_at"));
+        //tweet.username = User.fromJSON(jsonObject.getString("username"))
         return tweet;
 
     }
