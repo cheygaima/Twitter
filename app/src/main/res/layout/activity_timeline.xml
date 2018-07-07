@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".TimelineActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvTweet"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toptoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="#0084b4"
+        android:background="#003366"
 
         android:minHeight="?attr/actionBarSize"
 
@@ -33,7 +27,35 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/bird" />
+
+        <Switch
+            android:id="@+id/simpleSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:textColor="@android:color/white"
+            android:textOff="Day Mode"
+            android:textOn="Night Mode" />
+
+
     </android.support.v7.widget.Toolbar>
 
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvTweet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toptoolbar"
+            app:layout_constraintVertical_bias="0.0" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>

@@ -2,22 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <item
         android:id="@+id/mybutton"
-        android:color="#eb1313"
         android:icon="@layout/ic_vector_compose5"
         android:onClick="whenClicked"
         android:title=""
         app:showAsAction="always" />
-
-    <item
-        android:id="@+id/miActionProgress"
-        android:title="Loading..."
-        android:visible="false"
-        android:orderInCategory="100"
-        app:showAsAction="always"
-        />
-
 
 
 </menu>

@@ -1,8 +1,9 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +12,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -33,8 +36,9 @@ public class TimelineActivity extends AppCompatActivity {
     TweetAdapter tweetAdapter;
     ArrayList<Tweet> tweets;
     RecyclerView rvTweets;
-    MenuItem miActionProgressItem;
-
+    private SwipeRefreshLayout swipeContainer;
+    Switch simpleSwitch;
+    LinearLayout LL;
 
     private final int REQUEST_CODE = 20; //can we anything we want
 
@@ -43,15 +47,15 @@ public class TimelineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
 
+
         // Find the toolbar view inside the activity layout
         Toolbar toptoolbar = (Toolbar) findViewById(R.id.toptoolbar);
-        //Toolbar bottomtoolbar = (Toolbar) findViewById(R.id.bottomtoolbar);
 
 
+        LL = (LinearLayout) findViewById(R.id.ll);
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toptoolbar);
-        //setSupportActionBar(bottomtoolbar);
 
 
         client = TwitterApp.getRestClient(this);
@@ -71,7 +75,52 @@ public class TimelineActivity extends AppCompatActivity {
         //set the adapter
         rvTweets.setAdapter(tweetAdapter);
 
+
+        // Lookup the swipe container view
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully
+
+                tweetAdapter.clear();
+                populateTimeline();
+                swipeContainer.setRefreshing(false);
+
+
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+        simpleSwitch = (Switch) findViewById(R.id.simpleSwitch);
+
+        simpleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (simpleSwitch.isChecked())
+                {
+                    LL.setBackgroundColor(Color.parseColor("#003366"));
+
+                }
+                else
+                {
+                    LL.setBackgroundColor(Color.parseColor("#ffffff"));
+
+                }
+            }
+
+        });
+//
         populateTimeline();
+
     }
 
     @Override
@@ -94,6 +143,7 @@ public class TimelineActivity extends AppCompatActivity {
                 Log.d("TwitterClient", response.toString()); //THIS WASNT ALWAYS UNCOMMENTED!!!!
                 //iterate through the json array
                 //for each entry, deserialize the json object
+
                 for (int i = 0; i < response.length(); i++)
                 {
                     //covert each object to a tweet model
@@ -107,8 +157,10 @@ public class TimelineActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-
                 }
+
+                // Now we call setRefreshing(false) to signal refresh has finished
+                swipeContainer.setRefreshing(false);
 
             }
 
@@ -152,27 +204,27 @@ public class TimelineActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // Store instance of the menu item containing progress
-        miActionProgressItem = menu.findItem(R.id.miActionProgress);
-        // Extract the action-view from the menu item
-        ProgressBar v =  (ProgressBar) MenuItemCompat.getActionView(miActionProgressItem);
-        // Return to finish
-        return super.onPrepareOptionsMenu(menu);
-    }
 
-    public void showProgressBar() {
-        // Show progress item
-        miActionProgressItem.setVisible(true);
-    }
 
-    public void hideProgressBar() {
-        // Hide progress item
-        miActionProgressItem.setVisible(false);
-    }
+
 
 }
+
+//if (simpleSwitch.isChecked())
+//        {
+//        LL.setBackgroundColor(Color.parseColor("#003366"));
+//        user.setTextColor(Color.parseColor("#ffffff"));
+//        body.setTextColor(Color.parseColor("#ffffff"));
+//        timestamp.setTextColor(Color.parseColor("#ffffff"));
+//
+//        }
+//        else
+//        {
+//        LL.setBackgroundColor(Color.parseColor("#ffffff"));
+//        user.setTextColor(Color.parseColor("#003366"));
+//        body.setTextColor(Color.parseColor("#003366"));
+//        timestamp.setTextColor(Color.parseColor("#003366"));
+//        }
 
 
 

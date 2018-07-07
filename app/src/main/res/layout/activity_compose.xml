@@ -10,9 +10,11 @@
         android:id="@+id/btnPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:background="@android:color/holo_blue_light"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="14dp"
+        android:background="#003366"
         android:onClick="makeTweet"
         android:text="Tweet"
         android:textColor="@android:color/white"
@@ -24,9 +26,8 @@
         style="@android:style/DeviceDefault.Light.ButtonBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textContainer"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="-52dp"
+        android:layout_alignParentTop="true"
         android:layout_weight="1"
         android:background="#fcfeff"
         android:onClick="whenClicked"
@@ -40,12 +41,14 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="52dp"
         app:counterEnabled="true"
-        app:counterMaxLength="280">
+        app:counterMaxLength="280"
+        app:hintEnabled="false"
+        >
 
         <EditText
             android:id="@+id/et_Tweet"
             android:layout_width="match_parent"
-            android:layout_height="183dp"
+            android:layout_height="531dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:gravity="top"
@@ -53,6 +56,7 @@
             android:inputType="text"
             android:selectAllOnFocus="false"
             android:singleLine="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="16dp">
 

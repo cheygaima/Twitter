@@ -34,6 +34,8 @@ public class ComposeActivity extends AppCompatActivity {
         simpleEditText = (EditText) findViewById(R.id.et_Tweet);
 
         client = TwitterApp.getRestClient(this);
+        setTitle("Tell the world...");
+
     }
 
 
