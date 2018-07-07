@@ -48,7 +48,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:text="TextView"
-        android:textColor="@android:color/white"
+        android:textColor="#cc9900"
         android:textSize="12sp" />
 
     <ImageView
